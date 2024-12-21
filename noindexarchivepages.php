@@ -68,15 +68,18 @@ class NoindexArchivePages {
 
 		$should_noindex = false;
 
-		if ( is_date() || is_author() || is_category() || is_tag() ) {
-			if (!empty($this->options['paginated_only'])) {
-				$should_noindex = ($paged > 1);
+		if ( ( is_category() && ! empty( $this->options['category'] ) ) ||
+		     ( is_tag() && ! empty( $this->options['tag'] ) ) ||
+		     ( is_author() && ! empty( $this->options['author'] ) ) ||
+		     ( is_date() && ! empty( $this->options['date'] ) ) ) {
+			if ( ! empty( $this->options['paginated_only'] ) ) {
+				$should_noindex = ( $paged > 1 );
 			} else {
 				$should_noindex = true;
 			}
 		}
 
-		if ($should_noindex) {
+		if ( $should_noindex ) {
 			echo '<meta name="robots" content="noindex, follow">';
 		}
 	}
