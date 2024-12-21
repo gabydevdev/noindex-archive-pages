@@ -15,10 +15,16 @@ if ( ! defined( 'ABSPATH' ) )
 
 class NoindexArchivePages {
 
+	/**
+	 * Holds the singleton instance of this class.
+	 *
+	 * @var NoindexArchivePages|null
+	 */
 	private static $instance = null;
 
 	/**
 	 * Creates or returns an instance of this class.
+	 *
 	 * @since  1.0.0
 	 * @return NoindexArchivePages A single instance of this class.
 	 */
@@ -30,20 +36,33 @@ class NoindexArchivePages {
 		return self::$instance;
 	}
 
+	/**
+	 * NoindexArchivePages constructor.
+	 * Adds the action to insert the noindex meta tag.
+	 */
 	private function __construct() {
 		add_action( 'wp_head', array( $this, 'add_noindex_meta' ) );
 	}
 
+	/**
+	 * Adds a noindex meta tag to archive pages.
+	 */
 	public function add_noindex_meta() {
 		if ( is_archive() || is_date() || is_author() || is_category() || is_tag() ) {
 			echo '<meta name="robots" content="noindex, follow">';
 		}
 	}
 
+	/**
+	 * Flushes rewrite rules on plugin activation.
+	 */
 	public static function activate() {
 		flush_rewrite_rules();
 	}
 
+	/**
+	 * Flushes rewrite rules on plugin deactivation.
+	 */
 	public static function deactivate() {
 		flush_rewrite_rules();
 	}
