@@ -37,6 +37,9 @@ It can help prevent duplicate content issues. Consult an SEO expert for advice.
 ### 1.0.0
 - Initial release.
 
+### 2.5.0
+- Option page included.
+
 ## License
 
 MIT
