@@ -2,15 +2,16 @@
 /**
  * Plugin Name: Noindex Archive Pages
  * Description: Add a noindex meta tag to archive pages.
- * Plugin URI: http://nanatomedia.com
+ * Plugin URI:
  * Author: Nanato Media
- * Author URI: http://nanatomedia.com
+ * Author URI:
  * Version: 1.0.0
  * License: GPL2
  * Text Domain: noindex-archive-pages
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) )
+	exit;
 
 class NoindexArchivePages {
 
@@ -30,7 +31,13 @@ class NoindexArchivePages {
 	}
 
 	private function __construct() {
+		add_action( 'wp_head', array( $this, 'add_noindex_meta' ) );
+	}
 
+	public function add_noindex_meta() {
+		if ( is_archive() || is_date() || is_author() || is_category() || is_tag() ) {
+			echo '<meta name="robots" content="noindex, follow">';
+		}
 	}
 
 	public static function activate() {
