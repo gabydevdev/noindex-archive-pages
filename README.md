@@ -4,7 +4,7 @@
 **Requires at least:** 4.0
 **Tested up to:** 6.0
 **Stable tag:** 1.0.0
-**License:** GPL2
+**License:** MIT
 
 ## Description
 
@@ -39,4 +39,4 @@ It can help prevent duplicate content issues. Consult an SEO expert for advice.
 
 ## License
 
-GPL2. See [LICENSE](https://www.gnu.org/licenses/gpl-2.0.html).
+MIT
